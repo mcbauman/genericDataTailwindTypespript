@@ -23,3 +23,8 @@ add to the style.css
     @tailwind base;
     @tailwind components;
     @tailwind utilities;    
+
+to use Icons
+
+    npm install @headlessui/vue @heroicons/vue
+

@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input, select, button, fieldset{
+@apply p-2 m-1 border-none
+}
+
+input,select,fieldset{
+@apply rounded-xl bg-inputs
+}
+
+section{
+    @apply bg-maincolor text-maincontrast p-4
+}
+
+.entryWrapper{
+    @apply bg-maincolor rounded-xl flex flex-row align-middle shadow-xl m-5
+}
