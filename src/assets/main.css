@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.fieldWrapper{
+    @apply flex flex-col m-1
+}
+
+.row{
+    @apply flex flex-row
+}
+
 input, select, button, fieldset{
 @apply p-2 m-1 border-none
 }
@@ -11,9 +19,22 @@ input,select,fieldset{
 }
 
 section{
-    @apply bg-maincolor text-maincontrast p-4
+    @apply bg-maincolor text-maincontrast p-3
 }
 
 .entryWrapper{
-    @apply bg-maincolor rounded-xl flex flex-row align-middle shadow-xl m-5
+    @apply bg-maincolor rounded-xl flex flex-row align-middle shadow-xl m-4 p-3
 }
+
+button{
+    @apply ml-3 h-11 rounded-full min-w-[45px] bg-maincolor
+}
+
+.entryWrapper:hover, button:hover, a:hover{
+    @apply shadow-md
+  }
+
+label, span{
+    @apply text-xs
+}
+

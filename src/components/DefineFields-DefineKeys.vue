@@ -1,9 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { useKeyResponseStore } from "../stores/keyResonse";
 
 const response = useKeyResponseStore();
-const newKey = ref({});
+const newKey= ref<any> ({});
 const helper = ref();
 const array = ref([]);
 const object = ref([]);
@@ -55,7 +55,7 @@ function storeNewKey() {
         placeholder=""
       />
     </div>
-    <button class="submit" type="submit" @click.prevent="storeNewKey">
+    <button class="text-submit" type="submit" @click.prevent="storeNewKey">
       <font-awesome-icon icon="floppy-disk" title="Add key-defenition" />
     </button>
   </form>

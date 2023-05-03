@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import ShowValues from "../components/ShowValuesComponent.vue"
 </script>
 

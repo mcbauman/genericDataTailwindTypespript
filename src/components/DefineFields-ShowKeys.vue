@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useKeyResponseStore } from "../stores/keyResonse";
 
 function dropEvent(event, newIndex) {
@@ -49,7 +49,7 @@ const response = useKeyResponseStore();
           <div v-for="field in object.objectEntries">{{ field }} /</div>
         </div>
       </div>
-      <button @click="response.deleteKey(object)" class="danger gridButton">
+      <button @click="response.deleteKey(object)" class="text-danger gridButton">
         <font-awesome-icon icon="trash" />
       </button>
     </div>

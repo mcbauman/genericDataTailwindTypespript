@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useKeyResponseStore } from "../stores/keyResonse";
 import { useValueStore } from "../stores/ValueStore";
 import showDetails from "./ShowValues-DetailsModal.vue";

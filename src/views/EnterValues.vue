@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import EnterValues from "../components/EnterValuesComponent.vue";
 </script>
 

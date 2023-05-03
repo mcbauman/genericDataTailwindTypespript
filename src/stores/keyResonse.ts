@@ -1,23 +1,24 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import type { Ref } from 'vue'
 import {userStore} from "./userSettings"
 
 export const useKeyResponseStore = defineStore("keyResponse", () => {
   const user=userStore()
-  const Keys = ref([])
+  const Keys = ref<any>()
 
   function requestKeyes() {
     fetch("http://localhost:9000/key/requestKeys",{
       headers:{
         "content-Type": "application/json",
-        "authorization":user.token 
+        "authorization":user.token! 
       }
     })
       .then((response) => response.json())
       .then((data) => {
         if(data.message=="jwt expired"){
           localStorage.removeItem("token")
-          user.token=false
+          user.token=null
         }
         else{
         Keys.value = data;}
@@ -27,47 +28,47 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
     })
   }
 
-  function storeNewKey(newKeys) {
+  function storeNewKey(newKeys:any) {
     fetch("http://localhost:9000/key/postKeys", {
       method: "POST",
       headers: { 
         "content-Type": "application/json",
-        "authorization":user.token},
+        "authorization":user.token!},
       body: JSON.stringify(newKeys),
     }).then(() => {
       requestKeyes();
     });
   }
 
-  function deleteKey(filter) {
+  function deleteKey(filter:any) {
     fetch("http://localhost:9000/key/removeKey", {
       method: "Delete",
       headers: { 
         "content-Type": "application/json",
-        "authorization":user.token},
+        "authorization":user.token!},
       body: JSON.stringify(filter),
     }).then(() => {
       requestKeyes();
     });
   }
 
-  function updateKey(_id,index) {
+  function updateKey(_id:any,index:any) {
     fetch("http://localhost:9000/key/updateKey", {
       method: "Put",
       headers: { 
         "content-Type": "application/json",
-        "authorization":user.token},
+        "authorization":user.token!},
       body: JSON.stringify({_id,index}),
     }).then(() => {
       console.log("KEYS Sortet BE");
     });
   }
 
-  function moveItemToIndex(itemIndex, newIndex, _id) {
+  function moveItemToIndex(itemIndex:any, newIndex:any, _id:any) {
     const cutted = Keys.value.splice(itemIndex, 1);
     Keys.value.splice(newIndex, 0, cutted[0]);
-    Keys.value.forEach((e)=>e.index = Keys.value.findIndex((x)=>x._id === e._id))
-    Keys.value.forEach((element)=>{
+    Keys.value.forEach((e:any)=>e.index = Keys.value.findIndex((x:any)=>x._id === e._id))
+    Keys.value.forEach((element:any)=>{
       updateKey(element._id,element.index)
     })
   }

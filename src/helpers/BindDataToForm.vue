@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { useKeyResponseStore } from "../stores/keyResonse";
 import { useValueStore } from "../stores/ValueStore";
@@ -6,7 +6,7 @@ import { useValueStore } from "../stores/ValueStore";
 const props = defineProps(["variableToDeclare"]);
 const Values = useValueStore();
 const arrHelper = ref(false);
-const keyValuePairs = ref({});
+const keyValuePairs = ref<any>({});
 const response = useKeyResponseStore();
 
 function savefunction() {
@@ -68,7 +68,7 @@ function savefunction() {
 <!-- For Input Type Object -->
       <form v-if="item.type == 'Object'" class="wholeW">
         <div>
-          <button @click.prevent="arrHelper = true" class="submit">
+          <button @click.prevent="arrHelper = true" class="text-submit">
             <font-awesome-icon icon="plus" title="Add Data to List" />
             {{ item.name }} hinzufügen
           </button>
@@ -79,7 +79,7 @@ function savefunction() {
             <span>{{ elem }}</span>
             <input type="text" v-model="keyValuePairs[elem]" />
           </div>
-          <button @click.prevent="savefunction" class="submit">
+          <button @click.prevent="savefunction" class="text-submit">
             <font-awesome-icon icon="floppy-disk" title="Add key-defenition" />
           </button>
         </div>

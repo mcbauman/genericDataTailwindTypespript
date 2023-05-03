@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const userStore = defineStore("userStore", () => {
-  const user = ref({});
+  const user = ref<any>({});
   const tokenFromLS = localStorage.getItem("token");
   const tokenDefault = tokenFromLS ? tokenFromLS : null;
   const token = ref(tokenDefault);
@@ -22,11 +22,10 @@ export const userStore = defineStore("userStore", () => {
   function resetColors() {
     maincolor.value = "#e2dfdbB3";
     maincontrast.value = "#002868B3";
-    superUser.value.maincolor = "#e2dfdbB3";
-    superUser.value.maincontrast = "#002868B3";
+    superUser.value = {maincolor:"#e2dfdbB3",maincontrast:"#002868B3"};
   }
 
-  function login(user) {
+  function login(user:any) {
     fetch("http://localhost:9000/user/login", {
       method: "POST",
       headers: { "content-Type": "application/json" },
@@ -47,7 +46,7 @@ export const userStore = defineStore("userStore", () => {
       });
   }
 
-  function create(user){
+  function create(user:any){
     fetch("http://localhost:9000/user/createUser", {
       method: "POST",
       headers: { "content-Type": "application/json" },
@@ -56,14 +55,14 @@ export const userStore = defineStore("userStore", () => {
       .then(() => console.log("userCreated"))
   }
 
-  function update(user){
+  function update(user:any){
     localStorage.setItem("maincolor",maincolor.value)
     localStorage.setItem("maincontrast",maincontrast.value)
     fetch("http://localhost:9000/updateUser", {
       method: "PUT",
       headers: { 
         "content-Type": "application/json",
-        "authorization":token.value
+        Authorization:token.value!
       },
       body: JSON.stringify(user),
     })

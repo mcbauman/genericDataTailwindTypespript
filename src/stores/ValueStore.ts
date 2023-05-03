@@ -8,18 +8,18 @@ export const useValueStore = defineStore("valueStore", () => {
     const Values = ref({})
     const Array=ref([])
     const Response = ref("HERE IT IS")
-    const modal=ref(false)
+    const modal=ref<any>(null)
     const changedValues = ref({})
 
     function requestValues() {
       fetch("http://localhost:9000/value/getValues",{
-        headers:{"authorization":user.token}
+        headers:{"authorization":user.token!}
       })
         .then((response) => response.json())
         .then((data) => {
           if(data.message=="jwt expired"){
             localStorage.removeItem("token")
-            user.token=false
+            user.token=null
           }
           else{
             Response.value = data;
@@ -35,19 +35,19 @@ export const useValueStore = defineStore("valueStore", () => {
         method: "POST",
         headers: { 
           "content-Type": "application/json",
-          "authorization":user.token},
+          "authorization":user.token!},
         body: JSON.stringify(Values.value),
       }).then(() => {
         requestValues();
       });
     }
   
-    function deleteValue(id) {
+    function deleteValue(id:any) {
       fetch("http://localhost:9000/value/deleteValue", {
         method: "Delete",
         headers: { 
           "content-Type": "application/json",
-          "authorization":user.token},
+          "authorization":user.token!},
         body: JSON.stringify(id),
       }).then(() => {
         requestValues();
@@ -60,7 +60,7 @@ export const useValueStore = defineStore("valueStore", () => {
         method: "Put",
         headers: { 
           "content-Type": "application/json",
-          "authorization":user.token},
+          "authorization":user.token!},
         body: JSON.stringify(objectToSend),
       }).then(() => {
         requestValues();

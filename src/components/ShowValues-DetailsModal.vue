@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useValueStore } from "../stores/ValueStore";
 import BindDataToForm from "../helpers/BindDataToForm.vue";
 import { useKeyResponseStore } from "../stores/keyResonse";
@@ -32,12 +32,12 @@ function logIt() {
       <div class="modalMain">
         <BindDataToForm :variableToDeclare="Values.changedValues" />
         <button
-          class="danger"
+          class="text-danger"
           @click="deleteFunction"
         >
           <font-awesome-icon icon="trash" />
         </button>
-        <button @click="logIt" class="callToAction">
+        <button @click="logIt" class="bg-submit text-maincolor">
           <font-awesome-icon icon="floppy-disk" title="Add key-defenition" />
         </button>
       </div>

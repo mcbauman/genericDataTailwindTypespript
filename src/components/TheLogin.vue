@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { userStore } from "../stores/userSettings";
 
@@ -18,11 +18,11 @@ const user = userStore();
           <button
             type="submit"
             @click.prevent="user.login(loginData)"
-            class="callToAction"
+            class="bg-submit text-maincolor"
           >
             LogIn
           </button>
-          <button class="warning" @click="logCreate = false">
+          <button class="text-warning" @click="logCreate = false">
             Create User
           </button>
         </div>
@@ -40,11 +40,11 @@ const user = userStore();
           <button
             type="submit"
             @click.prevent="user.create(createData)"
-            class="callToAction"
+            class="bg-submit text-maincolor"
           >
             Create User
           </button>
-          <button class="warning" @click="logCreate = true">log in</button>
+          <button class="text-warning" @click="logCreate = true">log in</button>
         </div>
       </form>
     </section>
