@@ -3,12 +3,15 @@ import {userStore} from "./stores/userSettings.js"
 import TheStartPage from "./components/TheStartPage.vue"
 import TheLogin from "./components/TheLogin.vue"
 
+import learning from "../learning.vue"
+
 const user=userStore()
 </script>
 
 <template>
-  <TheStartPage v-if="user.token"/>
-  <TheLogin v-else/>
+  <learning/>
+  <!-- <TheStartPage v-if="user.token"/>
+  <TheLogin v-else/> -->
 </template>
 
 <style>
