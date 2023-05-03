@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useKeyResponseStore } from "../stores/keyResonse";
 import { useValueStore } from "../stores/ValueStore";
 import BindDataToForm from "../helpers/BindDataToForm.vue";
@@ -7,7 +7,7 @@ const Values = useValueStore();
 const response = useKeyResponseStore();
 
 function SubmitFunction() {
-  let childObjectKey = response.Keys.find((El) => El.type == "Object").name;
+  let childObjectKey:any = response.Keys.find((El:any) => El.type == "Object").name;
   Values.Values[childObjectKey] = Values.Array;
   console.log("EnterVAlues/Submit/Values.Array", Values.Array);
   console.log("EnterValues/Values.Values", Values.Values);
@@ -22,7 +22,7 @@ response.requestKeyes();
 <template>
   <form>
     <BindDataToForm :variableToDeclare="Values.Values" />
-    <button type="submit" @click.prevent="SubmitFunction" class="callToAction">
+    <button type="submit" @click.prevent="SubmitFunction" class="bg-submit text-maincolor">
       <font-awesome-icon icon="floppy-disk" title="Add key-defenition" />
     </button>
   </form>
