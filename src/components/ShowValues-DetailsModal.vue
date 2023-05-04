@@ -23,7 +23,7 @@ function logIt() {
 </script>
 
 <template>
-  <div class="modal">
+  <div class="modal mx-auto">
     <div class="modalContent">
       <div class="modalHeader">
         DETAILANSICHT
@@ -47,7 +47,7 @@ function logIt() {
 
 <style scoped>
 .modal {
-  margin: 0 auto;
+  /* margin: 0 auto; */
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   width: 100vw;

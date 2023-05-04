@@ -1,8 +1,11 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import type { Ref } from "vue";
+
+import type UserInterface from "@/interfaces/UserInterface";
 
 export const userStore = defineStore("userStore", () => {
-  const user = ref<any>({});
+  const user:Ref<UserInterface> = ref({token:null});
   const tokenFromLS = localStorage.getItem("token");
   const tokenDefault = tokenFromLS ? tokenFromLS : null;
   const token = ref(tokenDefault);

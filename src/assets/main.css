@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    @apply mx-auto max-w-7xl text-xl
+}
+
 .fieldWrapper{
     @apply flex flex-col m-1
 }
