@@ -30,11 +30,15 @@ const user=userStore()
 
   section{
     background-color: var(--maincontrast);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
   }
 
   nav{
     background-color: var(--maincontrast);
     color: var(--maincolor);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
   }
 
   .entryWrapper{
