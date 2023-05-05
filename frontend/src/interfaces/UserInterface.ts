@@ -1,13 +1,14 @@
 interface UserInterface{
     _id?:string;
-    token?:string|null
-    name?:string;
-    password?:string
-    maincontrast?:string
-    maincolor?:string
+    token?:string|null;
+    name:string|null;
+    password?:string|null;
+    maincontrast?:string;
+    maincolor?:string;
     role?:"admin"|"user";
     Keys?:String[];
     Values?:string[];
+    __v?:any;
 }
 
 export default UserInterface

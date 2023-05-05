@@ -13,13 +13,13 @@ export const useValueStore = defineStore("valueStore", () => {
 
     function requestValues() {
       fetch("http://localhost:9000/value/getValues",{
-        headers:{"authorization":user.token!}
+        headers:{"authorization":user.user.token!}
       })
         .then((response) => response.json())
         .then((data) => {
           if(data.message=="jwt expired"){
             localStorage.removeItem("token")
-            user.token=null
+            user.user.token=null
           }
           else{
             Response.value = data;
@@ -35,7 +35,7 @@ export const useValueStore = defineStore("valueStore", () => {
         method: "POST",
         headers: { 
           "content-Type": "application/json",
-          "authorization":user.token!},
+          "authorization":user.user.token!},
         body: JSON.stringify(Values.value),
       }).then(() => {
         requestValues();
@@ -47,7 +47,7 @@ export const useValueStore = defineStore("valueStore", () => {
         method: "Delete",
         headers: { 
           "content-Type": "application/json",
-          "authorization":user.token!},
+          "authorization":user.user.token!},
         body: JSON.stringify(id),
       }).then(() => {
         requestValues();
@@ -60,7 +60,7 @@ export const useValueStore = defineStore("valueStore", () => {
         method: "Put",
         headers: { 
           "content-Type": "application/json",
-          "authorization":user.token!},
+          "authorization":user.user.token!},
         body: JSON.stringify(objectToSend),
       }).then(() => {
         requestValues();

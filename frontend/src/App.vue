@@ -7,15 +7,15 @@ const user=userStore()
 </script>
 
 <template>
-  <TheStartPage v-if="user.token"/>
+  <TheStartPage v-if="user.user.token"/>
   <TheLogin v-else/>
 </template>
 
 <style>
   *{
     --inputs:white;
-    --maincolor:v-bind(user.maincolor);
-    --maincontrast:v-bind(user.maincontrast);
+    --maincolor:v-bind(user.user.maincolor);
+    --maincontrast:v-bind(user.user.maincontrast);
     --danger:rgb(200, 30, 30);
     --warning:rgb(179, 129, 36);
     --submit:rgb(113, 155, 29);

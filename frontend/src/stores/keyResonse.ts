@@ -11,14 +11,14 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
     fetch("http://localhost:9000/key/requestKeys",{
       headers:{
         "content-Type": "application/json",
-        "authorization":user.token! 
+        "authorization":user.user.token! 
       }
     })
       .then((response) => response.json())
       .then((data) => {
         if(data.message=="jwt expired"){
           localStorage.removeItem("token")
-          user.token=null
+          user.user.token=null
         }
         else{
         Keys.value = data;}
@@ -33,7 +33,7 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
       method: "POST",
       headers: { 
         "content-Type": "application/json",
-        "authorization":user.token!},
+        "authorization":user.user.token!},
       body: JSON.stringify(newKeys),
     }).then(() => {
       requestKeyes();
@@ -45,7 +45,7 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
       method: "Delete",
       headers: { 
         "content-Type": "application/json",
-        "authorization":user.token!},
+        "authorization":user.user.token!},
       body: JSON.stringify(filter),
     }).then(() => {
       requestKeyes();
@@ -57,7 +57,7 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
       method: "Put",
       headers: { 
         "content-Type": "application/json",
-        "authorization":user.token!},
+        "authorization":user.user.token!},
       body: JSON.stringify({_id,index}),
     }).then(() => {
       console.log("KEYS Sortet BE");

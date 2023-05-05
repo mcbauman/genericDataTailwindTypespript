@@ -1,0 +1,153 @@
+@url=http://localhost:9000
+
+##USER
+POST {{url}}/user/login
+Content-Type: application/json
+
+{
+  "name":"mcb",
+  "password":"123"
+}
+
+###
+POST {{url}}/login
+Content-Type: application/json
+
+{
+  "name":"mcb",
+  "password":"123"
+}
+### 
+POST {{url}}/createUser
+Content-Type: application/json
+
+{
+  "name":"MatthiasB",
+  "password":"1234",
+  "role":"admin"
+}
+###
+PUT {{url}}/updateUser
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDQyNzczMDViMjAxMTZjZDkwY2QyYjYiLCJpYXQiOjE2ODI0MTQ5NDMsImV4cCI6MTY4MjUwMTM0M30.FEq5InlWTnTEPV-WFENUd-DJFqPB2rKdYv_-aQ1MAOQ
+
+{
+  "maincolor":"#caf0feB3",
+  "maincontrast":"#561029B3"
+}
+
+###KEYS
+GET {{url}}/requestKeys
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDQyNzczMDViMjAxMTZjZDkwY2QyYjYiLCJpYXQiOjE2ODIzNDMyOTUsImV4cCI6MTY4MjQyOTY5NX0.e1I0jUjXlNQOd1NywoUzoeVbu_YmPoTcB2aZu86HPoY
+###
+POST {{url}}/postKeys
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDQyNzczMDViMjAxMTZjZDkwY2QyYjYiLCJpYXQiOjE2ODIzNDMyOTUsImV4cCI6MTY4MjQyOTY5NX0.e1I0jUjXlNQOd1NywoUzoeVbu_YmPoTcB2aZu86HPoY
+
+[
+      {
+    "name": "Vorname",
+    "type": "String",
+    "arrayOption": [],
+    "objectEntries": []
+  },
+  {
+    "name": "Nachname",
+    "type": "String",
+    "arrayOption": [],
+    "objectEntries": []
+  },
+  {
+    "name": "Geburtsdatum",
+    "type": "Date",
+    "arrayOption": [],
+    "objectEntries": []
+  },
+  {
+    "name": "verheiratet",
+    "type": "Boolean",
+    "arrayOption": [],
+    "objectEntries": []
+  },
+  {
+    "name": "Geschlecht",
+    "type": "Array",
+    "arrayOption": [
+      "Männlich",
+      "Weiblich",
+      "Divers"
+    ],
+    "objectEntries": []
+  },
+  {
+    "name": "Kinder",
+    "type": "Object",
+    "arrayOption": [
+      "Männlich",
+      "Weiblich",
+      "Divers"
+    ],
+    "objectEntries": [
+      "Name",
+      "Geburtsdatum"
+    ]
+  },
+  {
+    "name": "status",
+    "type": "Array",
+    "arrayOption": [
+      "Angestellt",
+      "Selbstständig",
+      "Arbeitslos"
+    ],
+    "objectEntries": []
+  },
+  {
+    "name": "Score",
+    "type": "Number",
+    "minRange": 0,
+    "maxRange": 15,
+    "arrayOption": [
+      "Angestellt",
+      "Selbstständig",
+      "Arbeitslos"
+    ],
+    "objectEntries": []
+  }
+]
+###
+
+DELETE {{url}}/removeKey
+Content-Type: application/json
+
+{
+    "name":"Array4"
+}
+
+###VALUES
+
+POST {{url}}/addValues
+Content-Type: application/json
+
+[{
+    "Vorname":"Matthias",
+    "Nachname":"Baumann"
+}]
+###
+GET {{url}}/getValues
+###
+DELETE {{url}}/deleteValue
+Content-Type: application/json
+
+{
+"_id":"643937a087d6de66f091e54b"
+}
+
+###
+PUT {{url}}/updateValue
+Content-Type: application/json
+
+{
+"_id":"643e3e682c54f1a984afa606",
+"Vorname":"Torge"
+}

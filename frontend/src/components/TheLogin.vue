@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import type { Ref } from "vue"
 import { userStore } from "../stores/userSettings";
+import type UserLoginCreateInterface from "@/interfaces/UserLoginCreateInterface";
 
-const loginData = ref<any>({});
-const createData = ref<any>({ role: "user" });
+const loginData:Ref<UserLoginCreateInterface> = ref({name:null,password:null});
+const createData = ref<UserLoginCreateInterface>();
 const logCreate = ref(true);
 const user = userStore();
 </script>
@@ -13,7 +15,7 @@ const user = userStore();
     <section v-if="logCreate" class="width-1/2 h-auto backdrop-blur flex flex-col rounded">
       <form class="flex flex-col">
         <input type="text" v-model="loginData.name" placeholder="UserName" />
-        <input type="password" v-model="loginData.password" placeholder="***" />
+        <input type="password" v-model="loginData!.password" placeholder="***" />
         <div>
           <button
             type="submit"
@@ -30,16 +32,16 @@ const user = userStore();
     </section>
     <section v-else class="width-1/2 backdrop-blur flex flex-col rounded">
       <form class="flex flex-col">
-        <input type="text" v-model="createData.name" placeholder="UserName" />
+        <input type="text" v-model="createData!.name" placeholder="UserName" />
         <input
           type="password"
-          v-model="createData.password"
+          v-model="createData!.password"
           placeholder="***"
         />
         <div>
           <button
             type="submit"
-            @click.prevent="user.create(createData)"
+            @click.prevent="user.create(createData!)"
             class="bg-submit text-maincolor"
           >
             Create User
