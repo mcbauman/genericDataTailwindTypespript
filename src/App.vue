@@ -3,13 +3,10 @@ import {userStore} from "./stores/userSettings.js"
 import TheStartPage from "./components/TheStartPage.vue"
 import TheLogin from "./components/TheLogin.vue"
 
-import learning from "../learning.vue"
-
 const user=userStore()
 </script>
 
 <template>
-  <!-- <learning/> -->
   <TheStartPage v-if="user.token"/>
   <TheLogin v-else/>
 </template>
@@ -25,12 +22,9 @@ const user=userStore()
     --background:rgb(20,20,20,0.2);
   }
   body{
-    /* margin: 0 auto;
-    max-width: 1200px; */
     background-image: url("./assets/pic1.jpg");
     background-size: cover;
     background-color: var(--background);
-    /* font-size: 1.2rem; */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 

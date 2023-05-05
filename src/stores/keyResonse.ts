@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import type { Ref } from 'vue'
 import {userStore} from "./userSettings"
+import type KeysInterface from "../interfaces/KeyInterface"
 
 export const useKeyResponseStore = defineStore("keyResponse", () => {
   const user=userStore()
-  const Keys = ref<any>()
+  const Keys = ref<KeysInterface[]>()
 
   function requestKeyes() {
     fetch("http://localhost:9000/key/requestKeys",{
@@ -28,7 +28,7 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
     })
   }
 
-  function storeNewKey(newKeys:any) {
+  function storeNewKey(newKeys:KeysInterface) {
     fetch("http://localhost:9000/key/postKeys", {
       method: "POST",
       headers: { 
@@ -52,7 +52,7 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
     });
   }
 
-  function updateKey(_id:any,index:any) {
+  function updateKey(_id:string,index:number) {
     fetch("http://localhost:9000/key/updateKey", {
       method: "Put",
       headers: { 
@@ -64,11 +64,11 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
     });
   }
 
-  function moveItemToIndex(itemIndex:any, newIndex:any, _id:any) {
-    const cutted = Keys.value.splice(itemIndex, 1);
-    Keys.value.splice(newIndex, 0, cutted[0]);
-    Keys.value.forEach((e:any)=>e.index = Keys.value.findIndex((x:any)=>x._id === e._id))
-    Keys.value.forEach((element:any)=>{
+  function moveItemToIndex(itemIndex:number, newIndex:number, _id:string) {
+    const cutted = Keys.value!.splice(itemIndex, 1);
+    Keys.value!.splice(newIndex, 0, cutted[0]);
+    Keys.value!.forEach((e:any)=>e.index = Keys.value!.findIndex((x:any)=>x._id === e._id))
+    Keys.value!.forEach((element:any)=>{
       updateKey(element._id,element.index)
     })
   }

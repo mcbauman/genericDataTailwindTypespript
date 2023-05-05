@@ -1,11 +1,10 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import type { Ref } from "vue";
-
 import type UserInterface from "@/interfaces/UserInterface";
 
 export const userStore = defineStore("userStore", () => {
-  const user:Ref<UserInterface> = ref({token:null});
+  const user:Ref<UserInterface> = ref({});
   const tokenFromLS = localStorage.getItem("token");
   const tokenDefault = tokenFromLS ? tokenFromLS : null;
   const token = ref(tokenDefault);
@@ -28,7 +27,7 @@ export const userStore = defineStore("userStore", () => {
     superUser.value = {maincolor:"#e2dfdbB3",maincontrast:"#002868B3"};
   }
 
-  function login(user:any) {
+  function login(user:UserInterface) {
     fetch("http://localhost:9000/user/login", {
       method: "POST",
       headers: { "content-Type": "application/json" },
@@ -49,7 +48,7 @@ export const userStore = defineStore("userStore", () => {
       });
   }
 
-  function create(user:any){
+  function create(user:UserInterface){
     fetch("http://localhost:9000/user/createUser", {
       method: "POST",
       headers: { "content-Type": "application/json" },
@@ -58,7 +57,7 @@ export const userStore = defineStore("userStore", () => {
       .then(() => console.log("userCreated"))
   }
 
-  function update(user:any){
+  function update(user:UserInterface){
     localStorage.setItem("maincolor",maincolor.value)
     localStorage.setItem("maincontrast",maincontrast.value)
     fetch("http://localhost:9000/updateUser", {

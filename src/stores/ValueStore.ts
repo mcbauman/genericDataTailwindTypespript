@@ -8,7 +8,7 @@ export const useValueStore = defineStore("valueStore", () => {
     const Values = ref({})
     const Array=ref([])
     const Response = ref("HERE IT IS")
-    const modal=ref<any>(null)
+    const modal=ref<any>(false)
     const changedValues = ref({})
 
     function requestValues() {

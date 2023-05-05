@@ -2,12 +2,13 @@
 import { useKeyResponseStore } from "../stores/keyResonse";
 import { useValueStore } from "../stores/ValueStore";
 import BindDataToForm from "../helpers/BindDataToForm.vue";
+import type KeysInterface from "../interfaces/KeyInterface"
 
 const Values = useValueStore();
 const response = useKeyResponseStore();
 
 function SubmitFunction() {
-  let childObjectKey:any = response.Keys.find((El:any) => El.type == "Object").name;
+  let childObjectKey:any =response.Keys.find((El:KeysInterface) => El.type == "Object").name;
   Values.Values[childObjectKey] = Values.Array;
   console.log("EnterVAlues/Submit/Values.Array", Values.Array);
   console.log("EnterValues/Values.Values", Values.Values);

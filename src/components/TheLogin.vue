@@ -2,8 +2,8 @@
 import { ref } from "vue";
 import { userStore } from "../stores/userSettings";
 
-const loginData = ref({});
-const createData = ref({ role: "user" });
+const loginData = ref<any>({});
+const createData = ref<any>({ role: "user" });
 const logCreate = ref(true);
 const user = userStore();
 </script>

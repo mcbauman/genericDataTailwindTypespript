@@ -1,5 +1,5 @@
 export default interface KeysInterface{
-    name:{type:String};
+    name:String;
     type:"String"|"Number"|"Date"|"Boolean"|"Array"|"Object";
     index?:Number;
     minRange?:Number;
