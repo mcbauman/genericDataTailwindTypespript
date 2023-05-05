@@ -28,6 +28,20 @@ const user=userStore()
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
+  section{
+    background-color: var(--maincontrast);
+  }
+
+  nav{
+    background-color: var(--maincontrast);
+    color: var(--maincolor);
+  }
+
+  .entryWrapper{
+    background-color: var(--maincolor);
+    color: var(--maincontrast);
+  }
+
   .router-link-active{
     color:white
   }

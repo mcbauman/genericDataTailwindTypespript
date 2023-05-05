@@ -22,12 +22,12 @@ input,select,fieldset{
 @apply rounded-xl bg-inputs
 }
 
-section{
+/* section{
     @apply bg-maincolor text-maincontrast p-3
-}
+} */
 
 .entryWrapper{
-    @apply bg-maincolor rounded-xl flex flex-row align-middle shadow-xl m-4 p-3
+    @apply rounded-xl flex flex-row align-middle shadow-xl m-4 p-3
 }
 
 button{

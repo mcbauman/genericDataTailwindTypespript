@@ -11,7 +11,7 @@ Values.requestValues();
 </script>
 
 <template>
-    <header class="bg-maincontrast text-maincolor">
+    <header>
       <nav class="flex justify-between">
         <RouterLink class="p-5 text-maincolor" to="/">Define Fields</RouterLink>
         <RouterLink class="p-5 text-maincolor" to="/about">Enter Values</RouterLink>

@@ -12,7 +12,7 @@ function LogTheCurrentColors() {
 
 <template>
   <section>
-    <form>
+    <form class="bg-maincolor">
       <div>
         <span>ContrastColor</span>
         <input type="color" v-model="userStr.user.maincontrast" />

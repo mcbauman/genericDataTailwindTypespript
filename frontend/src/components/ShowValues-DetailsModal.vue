@@ -74,7 +74,7 @@ function logIt() {
   padding: 10px;
 }
 .modalMain {
-  background-color:var(--maincolor);
+  background-color:var(--maincontrast);
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
