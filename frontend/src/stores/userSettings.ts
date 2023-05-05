@@ -13,14 +13,14 @@ export const userStore = defineStore("userStore", () => {
     role: "admin",
     Keys:[],
     Values:[],
-    maincolor: "#e2dfdbB3",
+    maincolor: "#e2dfdbE3",
     maincontrast: "#002868B3",
   }
   const defaultUser = userFromLS ? JSON.parse(userFromLS) : emptyUser;
   const user: Ref<UserInterface> = ref(defaultUser);
 
   function resetColors() {
-    user.value.maincolor = "#e2dfdbB3";
+    user.value.maincolor = "#e2dfdbE3";
     user.value.maincontrast = "#002868B3";
   }
 

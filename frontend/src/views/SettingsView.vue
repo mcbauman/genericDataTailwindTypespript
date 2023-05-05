@@ -4,7 +4,7 @@ import { userStore } from "../stores/userSettings";
 const userStr = userStore();
 
 function LogTheCurrentColors() {
-  userStr.user.maincolor!.length<8?userStr.user.maincolor+="B3":""
+  userStr.user.maincolor!.length<8?userStr.user.maincolor+="D3":""
   userStr.user.maincontrast!.length<8?userStr.user.maincontrast+="B3":""
   userStr.update({maincontrast:userStr.user.maincontrast, maincolor:userStr.user.maincolor})
 }
