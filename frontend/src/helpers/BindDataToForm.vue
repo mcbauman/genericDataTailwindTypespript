@@ -25,7 +25,7 @@ function savefunction() {
         >{{ item.minRange }} - {{ item.maxRange }}</span
       >
 
-<!-- For Input Type String -->
+<!-- For Input Type String or Date -->
       <input
         v-if="item.type == 'String' || item.type == 'Date'"
         :type="item.type"
@@ -33,6 +33,7 @@ function savefunction() {
         :placeholder="Values.modal[item.name]"
         class="aThird"
       />
+
 <!-- For Input Type Number -->
       <input
         v-if="item.type == 'Number'"

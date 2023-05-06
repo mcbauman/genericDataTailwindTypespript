@@ -22,6 +22,8 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
         }
         else{
         Keys.value = data;}
+        console.log("KEYS= ",data);
+        
       })
       .catch(error => {
         if(error){console.log(error)}

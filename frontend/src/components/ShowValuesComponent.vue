@@ -2,6 +2,7 @@
 import { useKeyResponseStore } from "../stores/keyResonse";
 import { useValueStore } from "../stores/ValueStore";
 import showDetails from "./ShowValues-DetailsModal.vue";
+import ShowDate from "@/helpers/ShowDate.vue";
 
 const response = useKeyResponseStore();
 const Values = useValueStore();
@@ -24,6 +25,8 @@ const Values = useValueStore();
             {{ value }}
           </div>
         </div>
+        <ShowDate v-else-if="content.type=='Date'" :date="element[content.name]"/>
+        <!-- <time v-else-if="content.type=='Date'" datetime="dd-mm-yyyy">{{ new Date(element[content.name]) }}</time> -->
         <div v-else>{{ element[content.name] }}</div>
       </td>
     </tr>
