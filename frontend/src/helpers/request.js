@@ -8,18 +8,6 @@ function putRequest(token,endpoint,varialbeToDefine){
         "authorization":token 
       }
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if(data.message=="jwt expired"){
-          localStorage.removeItem("token")
-          user.token=false
-        }
-        else{
-        varialbeToDefine = data;}
-      })
-      .catch(error => {
-        if(error){console.log(error)}
-    })
 }
 
 export {putRequest}

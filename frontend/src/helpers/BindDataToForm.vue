@@ -2,18 +2,19 @@
 import { ref } from "vue";
 import { useKeyResponseStore } from "../stores/keyResonse";
 import { useValueStore } from "../stores/ValueStore";
+import BindDataObjectHelper from "../helpers/BindDataObjectHelper.vue"
 
 const props = defineProps(["variableToDeclare"]);
 const Values = useValueStore();
-const arrHelper = ref(false);
-const keyValuePairs = ref<any>({});
+// const addObjectIsOpen = ref<Boolean>(false);
+// const keyValuePairs = ref<any>({});
 const response = useKeyResponseStore();
 
-function savefunction() {
-  Values.Array.push(keyValuePairs.value);
-  keyValuePairs.value = {};
-  arrHelper.value = false;
-}
+// function savefunction() {
+//   Values.Array.push(keyValuePairs.value);
+//   keyValuePairs.value = {};
+//   addObjectIsOpen.value = false;
+// }
 </script>
 
 <template>
@@ -68,24 +69,8 @@ function savefunction() {
       </fieldset>
 <!-- For Input Type Object -->
       <form v-if="item.type == 'Object'" class="wholeW">
-        <div>
-          <button @click.prevent="arrHelper = true" class="text-submit">
-            <font-awesome-icon icon="plus" title="Add Data to List" />
-            {{ item.name }} hinzufügen
-          </button>
-        </div>
-        <!-- Add Item to Object -->
-        <div class="entryWrapper" v-if="arrHelper">
-          <div v-for="elem in item.objectEntries" class="fieldWrapper">
-            <span>{{ elem }}</span>
-            <input type="text" v-model="keyValuePairs[elem]" />
-          </div>
-          <button @click.prevent="savefunction" class="text-submit">
-            <font-awesome-icon icon="floppy-disk" title="Add key-defenition" />
-          </button>
-        </div>
-        <!-- Show Items of Object -->
-        <div
+        <BindDataObjectHelper :responseKeys="item"/>
+        <!-- <div
           v-if="props.variableToDeclare == Values.Values"
           v-for="obj in Values.Array"
         >
@@ -103,7 +88,8 @@ function savefunction() {
             {{ value }}
           </div>
         </div>
-        <div v-else>NOT DEFINED</div>
+
+        <div v-else>NOT DEFINED</div> -->
       </form>
     </div>
   </div>

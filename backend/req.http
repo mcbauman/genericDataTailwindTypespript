@@ -18,12 +18,12 @@ Content-Type: application/json
   "password":"123"
 }
 ### 
-POST {{url}}/createUser
+POST {{url}}/user/createUser
 Content-Type: application/json
 
 {
-  "name":"MatthiasB",
-  "password":"1234",
+  "name":"mcb",
+  "password":"123",
   "role":"admin"
 }
 ###

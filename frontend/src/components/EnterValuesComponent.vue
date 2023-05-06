@@ -8,12 +8,10 @@ const Values = useValueStore();
 const response = useKeyResponseStore();
 
 function SubmitFunction() {
-  let childObjectKey:any =response.Keys.find((El:KeysInterface) => El.type == "Object").name;
-  Values.Values[childObjectKey] = Values.Array;
-  console.log("EnterVAlues/Submit/Values.Array", Values.Array);
-  console.log("EnterValues/Values.Values", Values.Values);
+  console.log(Values.Array);
+  Object.assign(Values.Values,Values.Array)
   Values.storeNewValue();
-  Values.Array = [];
+  Values.Array = {};
   Values.Values = {};
 }
 

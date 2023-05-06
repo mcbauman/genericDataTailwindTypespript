@@ -5,8 +5,8 @@ import {userStore} from "./userSettings"
 export const useValueStore = defineStore("valueStore", () => {
   const user=userStore()
 
-    const Values = ref({})
-    const Array=ref([])
+    const Values = ref({}) 
+    const Array=ref<any>({})
     const Response = ref("HERE IT IS")
     const modal=ref<any>(false)
     const changedValues = ref({})
@@ -69,5 +69,5 @@ export const useValueStore = defineStore("valueStore", () => {
       });
     }
 
-    return { Values, Array, Response, modal, changedValues, requestValues, storeNewValue, deleteValue, updateValue };
+    return { Values, Array: Array, Response, modal, changedValues, requestValues, storeNewValue, deleteValue, updateValue };
   });
