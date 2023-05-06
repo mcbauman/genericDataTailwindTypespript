@@ -2,6 +2,7 @@
 import { useValueStore } from "../stores/ValueStore";
 import BindDataToForm from "../helpers/BindDataToForm.vue";
 import { useKeyResponseStore } from "../stores/keyResonse";
+import type KeyInterface from "../interfaces/KeyInterface"
 
 const Values = useValueStore();
 const response = useKeyResponseStore();
@@ -11,12 +12,12 @@ function deleteFunction(){
   Values.modal=false
 }
 
-function logIt() {
+function storeChanges() {
   console.log("Modal", Values.modal);
   console.log("newVAriable", Values.changedValues);
-  let childObjectKey = response.Keys.find((El) => El.type == "Object").name;
+  let childObjectKey = response.Keys.find((El:KeyInterface) => El.type == "Object").name;
   console.log(childObjectKey);
-  Values.changedValues[childObjectKey]=Values.Array
+  Values.Array.length>0 ? Values.changedValues[childObjectKey]=Values.Array : null
   Values.updateValue();
   Values.modal=false
 }
@@ -37,7 +38,7 @@ function logIt() {
         >
           <font-awesome-icon icon="trash" />
         </button>
-        <button @click="logIt" class="bg-submit text-maincolor">
+        <button @click="storeChanges" class="bg-submit text-maincolor">
           <font-awesome-icon icon="floppy-disk" title="Add key-defenition" />
         </button>
       </div>

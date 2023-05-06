@@ -36,7 +36,7 @@ valueRouter.put("/updateValue", checkAuth.checkAuth, async (req,res)=>{
     }
 })
 
-valueRouter.delete("/removeAllKeys", checkAuth.checkAuth, async (req,res)=>{
+valueRouter.delete("/deleteValue", checkAuth.checkAuth, async (req,res)=>{
     console.log("REQUEST on /removeAllKeys")
     try {
         console.log("REQUEST on /deleteValue")

@@ -25,8 +25,8 @@ const Values = useValueStore();
             {{ value }}
           </div>
         </div>
-        <ShowDate v-else-if="content.type=='Date'" :date="element[content.name]"/>
-        <!-- <time v-else-if="content.type=='Date'" datetime="dd-mm-yyyy">{{ new Date(element[content.name]) }}</time> -->
+        <ShowDate v-else-if="content.type=='Date' && element[content.name]" :date="element[content.name]"/>
+        <!-- <time v-else-if="content.type=='Date'&& element[content.name]" datetime="dd-mm-yyyy">{{ element[content.name].split("T")[0] }}</time> -->
         <div v-else>{{ element[content.name] }}</div>
       </td>
     </tr>
