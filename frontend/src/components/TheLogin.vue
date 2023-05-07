@@ -8,18 +8,26 @@ const loginData: Ref<UserLoginCreateInterface> = ref({
   name: null,
   password: null,
 });
-const createData = ref<UserLoginCreateInterface>();
-const logCreate = ref(true);
+const createData = ref<UserLoginCreateInterface>({
+  name: null,
+  password: null,
+  role:"user",
+  maincolor: "#e2dfdbE3",
+  maincontrast: "#002868B3",
+});
+const logOrCreate = ref(true);
 const user = userStore();
 </script>
 
 <template>
   <main class="w-full flex justify-center items-center h-screen">
+<!-- LOGIN -->
     <section
-      v-if="logCreate"
+      v-if="logOrCreate"
       class="width-1/2 h-fit backdrop-blur flex flex-col rounded-xl p-6"
     >
       <form class="flex flex-col">
+      <header class="text-white">Login</header>
         <input
           type="text"
           v-model="loginData.name"
@@ -28,7 +36,7 @@ const user = userStore();
         />
         <input
           type="password"
-          v-model="loginData!.password"
+          v-model="loginData.password"
           placeholder="***"
           class="m-4"
         />
@@ -40,29 +48,33 @@ const user = userStore();
           >
             LogIn
           </button>
-          <button class="text-warning m-5" @click="logCreate = false">
+          <button class="text-warning m-5" @click.prevent="logOrCreate=false">
             Create User
           </button>
         </div>
       </form>
     </section>
-    <section v-else class="width-1/2 backdrop-blur flex flex-col rounded">
+
+<!-- SIGN UP -->
+    <section v-else class="width-1/2 backdrop-blur flex flex-col rounded p-6">
       <form class="flex flex-col">
-        <input type="text" v-model="createData!.name" placeholder="UserName" />
+        <header class="text-white">Create Account</header>
+        <input type="text" v-model="createData.name" placeholder="UserName" class="m-4" />
         <input
           type="password"
-          v-model="createData!.password"
+          v-model="createData.password"
           placeholder="***"
+          class="m-4"
         />
         <div>
           <button
             type="submit"
-            @click.prevent="user.create(createData!)"
-            class="bg-submit text-maincolor"
+            @click.prevent="user.create(createData)"
+            class="bg-submit text-maincolor m-4"
           >
             Create User
           </button>
-          <button class="text-warning" @click="logCreate = true">log in</button>
+          <button class="text-warning m-5" @click.prevent="logOrCreate = true">log in</button>
         </div>
       </form>
     </section>
