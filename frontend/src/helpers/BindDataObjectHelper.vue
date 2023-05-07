@@ -7,14 +7,19 @@ const addObjectIsOpen = ref<Boolean>(false);
 const keyValuePairs = ref<any>({});
 const Values = useValueStore();
 const innerArrayHelper=ref<any>([])
+const useCase=ref<"new"|"update">("new")
+
+Values.modal? useCase.value="update": useCase.value="new"
 
 function savefunction() {
     console.log("KEY-Value-Pairs",keyValuePairs.value);
+    console.log("Values.Modal",Values.modal);
+
+    Values.modal[props.responseKeys.name]?innerArrayHelper.value=(Values.modal[props.responseKeys.name]):null
     innerArrayHelper.value.push(keyValuePairs.value)
+    console.log("InnerArrayHelper",innerArrayHelper.value);
 // Override the Array with all innerArrayEntries
     Values.Array[props.responseKeys.name]=innerArrayHelper.value;
-// Value.modal holds selected Response Element, but only in Change Case
-    Values.modal?Values.Array[props.responseKeys.name]=Values.modal[props.responseKeys.name]:null
     console.log("Values.Array",Values.Array);
     keyValuePairs.value = {};
     addObjectIsOpen.value = false;
@@ -41,7 +46,7 @@ function savefunction() {
           </button>
         </form>
 <!-- ChildObject anzeigen -->
-        <div v-if="Values.modal" 
+        <div v-if="useCase=='update'" 
             v-for="obj in Values.modal[props.responseKeys.name]">
           <div v-for="(value, key) in obj">
             <span>{{ key }}</span>

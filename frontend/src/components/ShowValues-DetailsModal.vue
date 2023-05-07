@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { useValueStore } from "../stores/ValueStore";
 import BindDataToForm from "../helpers/BindDataToForm.vue";
-import { useKeyResponseStore } from "../stores/keyResonse";
-import type KeyInterface from "../interfaces/KeyInterface"
 
 const Values = useValueStore();
-const response = useKeyResponseStore();
 
 function deleteFunction(){
   Values.deleteValue({ _id: Values.modal._id })
@@ -13,13 +10,10 @@ function deleteFunction(){
 }
 
 function storeChanges() {
-  console.log("Modal", Values.modal);
-  console.log("newVAriable", Values.changedValues);
-  let childObjectKey = response.Keys.find((El:KeyInterface) => El.type == "Object").name;
-  console.log(childObjectKey);
-  Values.Array.length>0 ? Values.changedValues[childObjectKey]=Values.Array : null
+  Object.assign(Values.changedValues,Values.Array)
   Values.updateValue();
   Values.modal=false
+  Values.Array={}
 }
 </script>
 

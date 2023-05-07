@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { useKeyResponseStore } from "../stores/keyResonse";
 import { useValueStore } from "../stores/ValueStore";
 import BindDataToForm from "../helpers/BindDataToForm.vue";
-import type KeysInterface from "../interfaces/KeyInterface"
 
 const Values = useValueStore();
-const response = useKeyResponseStore();
 
 function SubmitFunction() {
   console.log(Values.Array);
@@ -15,7 +12,6 @@ function SubmitFunction() {
   Values.Values = {};
 }
 
-response.requestKeyes();
 </script>
 
 <template>
