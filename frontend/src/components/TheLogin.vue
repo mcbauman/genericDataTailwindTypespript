@@ -14,7 +14,7 @@ const user = userStore();
 </script>
 
 <template>
-  <main class="w-screen flex justify-center items-center h-screen">
+  <main class="w-full flex justify-center items-center h-screen">
     <section
       v-if="logCreate"
       class="width-1/2 h-fit backdrop-blur flex flex-col rounded-xl p-6"

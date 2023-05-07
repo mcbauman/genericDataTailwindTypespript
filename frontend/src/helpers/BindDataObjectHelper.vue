@@ -13,6 +13,8 @@ function savefunction() {
     innerArrayHelper.value.push(keyValuePairs.value)
 // Override the Array with all innerArrayEntries
     Values.Array[props.responseKeys.name]=innerArrayHelper.value;
+// Value.modal holds selected Response Element, but only in Change Case
+    Values.modal?Values.Array[props.responseKeys.name]=Values.modal[props.responseKeys.name]:null
     console.log("Values.Array",Values.Array);
     keyValuePairs.value = {};
     addObjectIsOpen.value = false;
@@ -39,7 +41,14 @@ function savefunction() {
           </button>
         </form>
 <!-- ChildObject anzeigen -->
-        <div v-for="obj in Values.Array[props.responseKeys.name]">
+        <div v-if="Values.modal" 
+            v-for="obj in Values.modal[props.responseKeys.name]">
+          <div v-for="(value, key) in obj">
+            <span>{{ key }}</span>
+            {{ value }}
+          </div>
+        </div>
+        <div v-else v-for="obj in Values.Array[props.responseKeys.name]">
           <div v-for="(value, key) in obj">
             <span>{{ key }}</span>
             {{ value }}

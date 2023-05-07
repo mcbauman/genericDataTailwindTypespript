@@ -48,7 +48,7 @@ export const userStore = defineStore("userStore", () => {
 
   function update(profileChanges: any) {
     localStorage.setItem("activeUser", JSON.stringify(user.value));
-    fetch("http://localhost:9000/updateUser", {
+    fetch("http://localhost:9000/user/updateUser", {
       method: "PUT",
       headers: {
         "content-Type": "application/json",
