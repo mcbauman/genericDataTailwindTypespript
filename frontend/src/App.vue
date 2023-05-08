@@ -28,10 +28,14 @@ const user=userStore()
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
-  section{
+  main{
     background-color: var(--maincontrast);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+  }
+
+  section{
+    background-color:#e2dfdbB3;
   }
 
   nav{
