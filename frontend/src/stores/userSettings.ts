@@ -18,6 +18,7 @@ export const userStore = defineStore("userStore", () => {
   }
   const defaultUser = userFromLS ? JSON.parse(userFromLS) : emptyUser;
   const user: Ref<UserInterface> = ref(defaultUser);
+  const allUsers=ref<UserInterface[]>()
 
   function resetColors() {
     user.value.maincolor = "#e2dfdbE3";
@@ -36,6 +37,21 @@ export const userStore = defineStore("userStore", () => {
         user.value = data;
         localStorage.setItem("activeUser", JSON.stringify(data));
       });
+  }
+
+  function getAllUsers(){
+    fetch("http://localhost:9000/user/getAllUsers",{
+      method:"GET",
+      headers: {
+        "content-Type": "application/json",
+        Authorization: user.value.token!,
+      },
+    })
+    .then((response)=>response.json())
+    .then((data:UserInterface[])=>{
+      console.log(data);
+      allUsers.value=data
+    })
   }
 
   function create(userLoginData: UserLoginCreateInterface) {
@@ -66,6 +82,7 @@ export const userStore = defineStore("userStore", () => {
   return {
     user,
     login,
+    getAllUsers,
     resetColors,
     logout,
     create,

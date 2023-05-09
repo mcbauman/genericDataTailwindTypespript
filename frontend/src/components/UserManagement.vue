@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { userStore } from "../stores/userSettings";
+const user=userStore()
+
+user.getAllUsers()
 </script>
 
 <template>
