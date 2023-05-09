@@ -1,6 +1,7 @@
 <script setup  lang="ts">
 import { userStore } from "../stores/userSettings";
 import UserManagement from "@/components/UserManagement.vue";
+import DefineListView from "@/components/DefineListView.vue";
 
 const userStr = userStore();
 
@@ -29,6 +30,7 @@ function LogTheCurrentColors() {
     </form>
   </section>
   <UserManagement />
+  <DefineListView />
   <section>
     <button @click="userStr.logout" class="text-danger">Logout</button>
   </section>

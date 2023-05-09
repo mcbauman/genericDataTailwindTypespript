@@ -54,7 +54,7 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
     });
   }
 
-  function updateKey(_id:string,index:number) {
+  function updateKey(_id:string,index:Object) {
     fetch("http://localhost:9000/key/updateKey", {
       method: "Put",
       headers: { 
@@ -71,9 +71,9 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
     Keys.value!.splice(newIndex, 0, cutted[0]);
     Keys.value!.forEach((e:any)=>e.index = Keys.value!.findIndex((x:any)=>x._id === e._id))
     Keys.value!.forEach((element:any)=>{
-      updateKey(element._id,element.index)
+      updateKey(element._id,{index:element.index})
     })
   }
 
-  return { Keys, requestKeyes, storeNewKey, deleteKey, moveItemToIndex };
+  return { Keys, requestKeyes, storeNewKey, deleteKey, moveItemToIndex, updateKey };
 });

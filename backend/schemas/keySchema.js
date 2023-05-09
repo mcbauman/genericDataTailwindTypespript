@@ -4,6 +4,7 @@ const keySchema=new mongoose.Schema({
     name:{type:String, required:true, unique:true },
     type:{type:String, enum:["String","Number","Date","Boolean","Array","Object"],required:true},
     index:Number,
+    index2:Number,
     minRange:Number,
     maxRange:Number,
     arrayOption:[String],
