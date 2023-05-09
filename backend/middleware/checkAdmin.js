@@ -8,11 +8,12 @@ async function checkAdmin(req,res,next){
         const token=authHeader.split(" ")[1]
         const payload=jwt.verify(token,process.env.SECRET)
         const user= await UserSchema.findById(payload.uid)
+        console.log(user.role);
         if(user.role=="admin"){
             req.user=user
-            next()
+            return next()
         }
-        return next({status:401, message:"user is missing the rights"})
+        next({status:401, message:"user is missing the rights"})
     } catch (error) {
         console.log(error);
         res.status(500).send(error)
