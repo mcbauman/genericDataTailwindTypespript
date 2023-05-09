@@ -1,5 +1,6 @@
 const express = require("express")
 const checkAuth = require("../middleware/checkAuth")
+const checkAdmin = require("../middleware/checkAdmin.js")
 const crypto=require("../helpers/crypto")
 const jwt = require('jsonwebtoken')
 const UserSchema = require("../schemas/userSchema");
@@ -26,6 +27,17 @@ userRouter.post("/login", async (req,res)=>{
     }
 })
 
+userRouter.get("/getAllUsers", checkAdmin.checkAdmin, async (req, res)=>{
+    console.log("/getAllUsers");
+    try {
+        const result= await UserSchema.find()
+        res.send(result)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error)
+    }
+})
+
 userRouter.post("/createUser", async (req,res)=>{
     console.log("REQUEST on /createUser",req.body);
     try {
@@ -43,6 +55,17 @@ userRouter.put("/updateUser", checkAuth.checkAuth, async (req,res)=>{
     try {
         const result=await UserSchema.findByIdAndUpdate(req.user._id,req.body,{new:true})
         res.status(200).send(result)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error)
+    }
+})
+
+userRouter.delete("/deleteUser",checkAuth.checkAuth, async (req,res)=>{
+    console.log("/delereUser",req.body._id);
+    try {
+        const result= await UserSchema.findByIdAndDelete(req.body._id)
+        res.send(result)
     } catch (error) {
         console.log(error);
         res.status(500).send(error)

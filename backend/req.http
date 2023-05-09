@@ -8,6 +8,11 @@ Content-Type: application/json
   "name":"mcb",
   "password":"123"
 }
+###
+
+GET {{url}}/user/getAllUsers
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDU2MzAyNzllMzZhYzhkOTc5NTUzZDUiLCJpYXQiOjE2ODM2MTAwMTIsImV4cCI6MTY4MzY5NjQxMn0.PkLEjWqcrFTg04l6rGF0z2SV1WaNFIGX4r9_9Mo0KrU
 
 ###
 POST {{url}}/login

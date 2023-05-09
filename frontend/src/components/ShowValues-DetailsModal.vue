@@ -11,6 +11,8 @@ function deleteFunction(){
 
 function storeChanges() {
   Object.assign(Values.changedValues,Values.Array)
+  console.log("After Assign",Values.changedValues);
+  
   Values.updateValue();
   Values.modal=false
   Values.Array={}

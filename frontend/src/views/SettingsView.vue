@@ -1,5 +1,6 @@
 <script setup  lang="ts">
 import { userStore } from "../stores/userSettings";
+import UserManagement from "@/components/UserManagement.vue";
 
 const userStr = userStore();
 
@@ -27,6 +28,7 @@ function LogTheCurrentColors() {
       </button>
     </form>
   </section>
+  <UserManagement />
   <section>
     <button @click="userStr.logout" class="text-danger">Logout</button>
   </section>
