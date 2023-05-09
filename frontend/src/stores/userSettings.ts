@@ -33,7 +33,6 @@ export const userStore = defineStore("userStore", () => {
     })
       .then((response) => response.json())
       .then((data: any) => {
-        console.log("DATA", data);
         user.value = data;
         localStorage.setItem("activeUser", JSON.stringify(data));
       });
@@ -49,7 +48,6 @@ export const userStore = defineStore("userStore", () => {
     })
     .then((response)=>response.json())
     .then((data:UserInterface[])=>{
-      console.log(data);
       allUsers.value=data
     })
   }
@@ -74,15 +72,33 @@ export const userStore = defineStore("userStore", () => {
     }).then(() => console.log("Changes Stored"));
   }
 
+  function deleteUser(uid:string){
+    fetch("http://localhost:9000/user/deleteUser",{
+      method: "DELETE",
+      headers: {
+        "content-Type": "application/json",
+        Authorization: user.value.token!,
+      },
+      body: JSON.stringify({_id:uid}),
+    })
+    .then(()=>{
+      console.log("User Deleted");
+      getAllUsers()
+    })
+  }
+
   function logout() {
     user.value=emptyUser
+    allUsers.value=undefined
     localStorage.removeItem("activeUser");
   }
 
   return {
     user,
+    allUsers,
     login,
     getAllUsers,
+    deleteUser,
     resetColors,
     logout,
     create,

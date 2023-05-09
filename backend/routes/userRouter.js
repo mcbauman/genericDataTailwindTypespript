@@ -18,7 +18,6 @@ userRouter.post("/login", async (req,res)=>{
             else{
                 const token=jwt.sign({uid:user._id},process.env.SECRET,{expiresIn:"1d"})
                 res.send(JSON.stringify({...user._doc,token:`Bearer ${token}`}))
-                // res.send(JSON.stringify({token:`Bearer ${token}`,user}))
             }
         }
     } catch (error) {
@@ -61,7 +60,7 @@ userRouter.put("/updateUser", checkAuth.checkAuth, async (req,res)=>{
     }
 })
 
-userRouter.delete("/deleteUser",checkAuth.checkAuth, async (req,res)=>{
+userRouter.delete("/deleteUser",checkAdmin.checkAdmin, async (req,res)=>{
     console.log("/delereUser",req.body._id);
     try {
         const result= await UserSchema.findByIdAndDelete(req.body._id)
