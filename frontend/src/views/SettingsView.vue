@@ -2,8 +2,26 @@
 import { userStore } from "../stores/userSettings";
 import UserManagement from "@/components/UserManagement.vue";
 import DefineListView from "@/components/DefineListView.vue";
+import Autorender from "@/components/Autorender.vue";
 
 const userStr = userStore();
+const testObject=[
+  {
+    name:"matthias",
+    hasChildren:true,
+    children:[{
+      name:"Torge",hasChildren:false
+    },
+    {
+      name:"Elodie",hasChildren:false
+    }
+  ]
+  },
+  {
+    name:"Cynthia",
+    hasChildren:false
+  }
+]
 
 function LogTheCurrentColors() {
   userStr.user.maincolor!.length<8?userStr.user.maincolor+="D3":""
@@ -14,6 +32,9 @@ function LogTheCurrentColors() {
 
 <template>
   <section>
+
+    <Autorender v-for="item in testObject" :item="item" />
+
     <form class="bg-maincolor">
       <div>
         <span>ContrastColor</span>

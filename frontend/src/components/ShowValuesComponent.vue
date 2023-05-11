@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { useKeyResponseStore } from "../stores/keyResonse";
 import { useValueStore } from "../stores/ValueStore";
 import showDetails from "./ShowValues-DetailsModal.vue";
@@ -6,6 +7,9 @@ import ShowDate from "@/helpers/ShowDate.vue";
 
 const response = useKeyResponseStore();
 const Values = useValueStore();
+const sortedKeys=ref(response.Keys.sort((a,b)=>(a.index2)-(b.index2)))
+console.log("Sorted Keys: ",sortedKeys.value);
+
 </script>
 
 <template>
