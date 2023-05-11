@@ -54,13 +54,15 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
     });
   }
 
-  function updateKey(_id:string,index:Object) {
+  function updateKey(_id:string,update:Object) {
+    console.log("UpdateKey",update);
+    
     fetch("http://localhost:9000/key/updateKey", {
       method: "Put",
       headers: { 
         "content-Type": "application/json",
         "authorization":user.user.token!},
-      body: JSON.stringify({_id,index}),
+      body: JSON.stringify({_id,update}),
     }).then(() => {
       console.log("KEYS Sortet BE");
     });

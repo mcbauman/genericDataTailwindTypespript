@@ -43,7 +43,7 @@ keyRouter.post("/postKeys",checkAuth.checkAuth, async (req,res)=>{
 keyRouter.put("/updateKey", checkAuth.checkAuth, async (req,res)=>{
     console.log("UpdateKey",req.body);
     try {
-        const result=await KeySchema.findByIdAndUpdate(req.body._id,req.body,{new:true})
+        const result=await KeySchema.findByIdAndUpdate(req.body._id,req.body.update,{new:true})
         res.status(200).send(result)
     } catch (error) {
         console.log(error);
