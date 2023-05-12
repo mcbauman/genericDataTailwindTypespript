@@ -6,5 +6,5 @@ export default interface KeysInterface{
     minRange?:Number;
     maxRange?:Number;
     arrayOption:String[];
-    objectEntries:any[];
+    objectEntries:KeysInterface[];
 }
