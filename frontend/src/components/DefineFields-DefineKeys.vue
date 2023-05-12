@@ -8,28 +8,45 @@ const response = useKeyResponseStore();
 const helper = ref<any>(1);
 const array = ref([]);
 const object = ref([]);
-const variableToWrite=ref()
+const varToWrite=ref<any>({})
 
-!props.varialbeToWrite? variableToWrite.value=newKey.value:variableToWrite.value=newKey.value
+console.log("beforeIf",props.varialbeToWrite);
+
+if(props.varialbeToWrite){
+  console.log("IF");
+  const addition=props.varialbeToWrite
+  console.log("addition", addition);
+  varToWrite.value[addition]={name:123}
+  varToWrite.value= varToWrite.value[addition]
+}else{
+  console.log("ELSE");
+  varToWrite.value=newKey.value
+}
+console.log("afterIf",varToWrite.value);
+
+
+// props.varialbeToWrite ? varToWrite.value= varToWrite.props.varialbeToWrite.slice() : varToWrite.value=newKey.value
+
 // newKey
 // newKey.(newKey.name)
 // newKey.(newKey.name).(newKey.name)
 //...
 
 function storeNewKey() {
-  response.storeNewKey({
-    ...newKey.value,
-    arrayOption: array.value,
-    objectEntries: object.value,
-  });
+  console.log("Variable to declare",props.varialbeToWrite);
+  console.log("VarToLock",varToWrite.value);
+  
+  console.log("NewKEy",newKey.value);
+  
+  response.storeNewKey({...newKey.value, arrayOption: array.value});
   helper.value = null;
 }
 </script>
 
 <template>
   <form class="entryWrapper">
-    <input type="text" placeholder="name" v-model="variableToWrite.name" />
-    <select v-model="variableToWrite.type">
+    <input type="text" placeholder="name" v-model="varToWrite.name" />
+    <select v-model="varToWrite.type">
       <option value="String">String</option>
       <option value="Number">Number</option>
       <option value="Date">Date</option>
@@ -37,11 +54,11 @@ function storeNewKey() {
       <option value="Array">Liste</option>
       <option value="Object">strukturierte Liste</option>
     </select>
-    <div v-if="variableToWrite.type === 'Number'">
-      <input type="Number" placeholder="min" v-model="variableToWrite.minRange" />
-      <input type="Number" placeholder="max" v-model="variableToWrite.maxRange" />
+    <div v-if="varToWrite.type === 'Number'">
+      <input type="Number" placeholder="min" v-model="varToWrite.minRange" />
+      <input type="Number" placeholder="max" v-model="varToWrite.maxRange" />
     </div>
-    <div v-if="variableToWrite.type === 'Array'">
+    <div v-if="varToWrite.type === 'Array'">
       <input
         type="number"
         placeholder="Anzahl Listen-Elemente"
@@ -54,9 +71,9 @@ function storeNewKey() {
         placeholder="Auswahl-Option"
       />
     </div>
-    <div v-if="variableToWrite.type === 'Object'">
+    <div v-if="varToWrite.name && varToWrite.type === 'Object'">
       <input type="number" placeholder="Anzahl Subtypen" v-model="helper" />
-      <DefineFields-DefineKeys v-for="number in helper" :variableToWrite="variableToWrite[variableToWrite.name]"/>
+      <DefineFields-DefineKeys v-for="number in helper" id="InnerLoop" :varialbeToWrite="varToWrite.name.slice()"/>
     </div>
     <!-- <div v-if="variableToWrite.type === 'Object'">
       <input type="number" placeholder="Anzahl Subtypen" v-model="helper" />
