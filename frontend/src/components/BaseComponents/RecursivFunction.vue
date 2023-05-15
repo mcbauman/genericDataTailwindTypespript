@@ -7,11 +7,12 @@ const props=defineProps(["item"])
 <template>
     <div class="m-4">
         <!-- <div v-if="props.item.objectEntries.length!=0"> -->
-        <div v-if="props.item.type!='Object'">
+        <div v-if="props.item.type=='Object'">
             <div>
                 {{ props.item.name }}
             </div>
             <RecursivFunction v-for="objectEntries in props.item.objectEntries" class="m-4" :item="objectEntries"/>
+            <button>Add</button>
         </div>
         <BaseForm v-else :item="props.item" />
     </div>
