@@ -78,7 +78,7 @@ const testObject=ref([
         DefineKeys
     </section>
     <section id="EnterValues">
-        <Recursive v-for="item in testObject" :item="item"/>
+        <Recursive v-for="item in keys.Keys" :item="item"/>
     </section>
     <section id="ShowValues">
         SHWOW-VALUES
