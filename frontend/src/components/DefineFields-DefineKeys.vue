@@ -35,11 +35,15 @@ console.log("afterIf",varToWrite.value);
 function storeNewKey() {
   console.log("Variable to declare",props.varialbeToWrite);
   console.log("VarToLock",varToWrite.value);
-  
+  if(props.varialbeToWrite){
+    newKey.value.type='Object'
+    newKey.value.name=props.varialbeToWrite
+    // newKey.objectEntries=varToWrite.value
+    response.storeNewKey({...newKey.value, objectEntries:varToWrite.value})
+  }
+  else{response.storeNewKey({...newKey.value, arrayOption: array.value})}
   console.log("NewKEy",newKey.value);
-  
-  response.storeNewKey({...newKey.value, arrayOption: array.value});
-  helper.value = null;
+  helper.value = 1;
 }
 </script>
 
@@ -84,7 +88,7 @@ function storeNewKey() {
         placeholder=""
       />
     </div> -->
-    <button class="text-submit" type="submit" @click.prevent="storeNewKey">
+    <button v-if="varToWrite.type !== 'Object'" class="text-submit" type="submit" @click.prevent="storeNewKey">
       <font-awesome-icon icon="floppy-disk" title="Add key-defenition" />
     </button>
   </form>
