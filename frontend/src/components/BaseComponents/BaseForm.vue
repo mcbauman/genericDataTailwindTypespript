@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const props = defineProps(["item"]);
+import { useValueStore } from '@/stores/ValueStore';
+const props = defineProps(["item","pathToVariableToDeclare"]);
+const value= useValueStore()
 </script>
 
 <template>

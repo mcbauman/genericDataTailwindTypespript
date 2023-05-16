@@ -3,8 +3,10 @@ import { ref } from "vue";
 import Recursive from "../components/BaseComponents/RecursivFunction.vue"
 import { useKeyResponseStore } from "@/stores/keyResonse";
 import type KeysInterface from "@/interfaces/KeyInterface";
+import { useValueStore } from "@/stores/ValueStore";
 
 const keys=useKeyResponseStore()
+const value=useValueStore()
 const newKey=ref<KeysInterface>()
 </script>
 
@@ -13,7 +15,7 @@ const newKey=ref<KeysInterface>()
         DEFINE KEYS
     </section>
     <section id="EnterValues">
-        <Recursive v-for="item in keys.Keys" :item="item"/>
+        <Recursive v-for="item in keys.Keys" :item="item" :pathToVariableToDeclare="value.Values" />
     </section>
     <section id="ShowValues">
         SHWOW-VALUES
