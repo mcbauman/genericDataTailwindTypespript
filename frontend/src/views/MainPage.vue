@@ -7,7 +7,7 @@ import { useValueStore } from "@/stores/ValueStore";
 
 const keys=useKeyResponseStore()
 const value=useValueStore()
-const newKey=ref<KeysInterface>()
+// const newKey=ref<KeysInterface>()
 </script>
 
 <template>

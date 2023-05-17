@@ -11,7 +11,7 @@ const props = defineProps(["keyDiscription"]);
       <RecursivFunction
         v-for="objectEntries in props.keyDiscription.objectEntries"
         class="m-4"
-        :item="objectEntries"
+        :keyDiscription="objectEntries"
       />
       <button>Add</button>
     </div>
