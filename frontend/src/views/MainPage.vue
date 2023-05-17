@@ -15,7 +15,7 @@ const newKey=ref<KeysInterface>()
         DEFINE KEYS
     </section>
     <section id="EnterValues">
-        <Recursive v-for="item in keys.Keys" :item="item" :pathToVariableToDeclare="value.Values" />
+        <Recursive v-for="item in keys.Keys" :keyDiscription="item" />
     </section>
     <section id="ShowValues">
         SHWOW-VALUES

@@ -1,43 +1,43 @@
 <script setup lang="ts">
 import { useValueStore } from '@/stores/ValueStore';
-const props = defineProps(["item","pathToVariableToDeclare"]);
+const props = defineProps(["keyDiscription"]);
 const value= useValueStore()
 </script>
 
 <template>
   <div class="fieldWrapper">
-    <span>{{ props.item.name }}</span>
+    <span>{{ props.keyDiscription.name }}</span>
 
 <!-- AddOn To Key if Type== Number -->
-  <span v-if="props.item.type == 'Number'"
-          >{{ props.item.minRange }} - {{ props.item.maxRange }}</span
+  <span v-if="props.keyDiscription.type == 'Number'"
+          >{{ props.keyDiscription.minRange }} - {{ props.keyDiscription.maxRange }}</span
         >
 
 <!-- For Input Type String or Date -->
     <input
-      v-if="props.item.type == 'String' || props.item.type == 'Date'"
-      :type="props.item.type"
+      v-if="props.keyDiscription.type == 'String' || props.keyDiscription.type == 'Date'"
+      :type="props.keyDiscription.type"
       class="aThird"
     />
 
 <!-- For Input Type Number -->
     <input
-      v-if="props.item.type == 'Number'"
+      v-if="props.keyDiscription.type == 'Number'"
       type="Number"
-      :min="props.item.minRange"
-      :max="props.item.maxRange"
+      :min="props.keyDiscription.minRange"
+      :max="props.keyDiscription.maxRange"
       class="aThird"
     />
 <!-- For Input Type Boolean -->
     <input
-      v-if="props.item.type == 'Boolean'"
+      v-if="props.keyDiscription.type == 'Boolean'"
       type="checkbox"
       class="aThird"
     />
     
 <!-- For Input Type Array -->
-    <select v-if="props.item.type == 'Array'">
-      <option v-for="option in props.item.arrayOption" :value="option">
+    <select v-if="props.keyDiscription.type == 'Array'">
+      <option v-for="option in props.keyDiscription.arrayOption" :value="option">
         {{ option }}
       </option>
     </select>
