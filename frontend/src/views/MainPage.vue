@@ -14,7 +14,9 @@ function storenNewValue(){
 </script>
 
 <template>
+  <div class="text-white">DEFINE KEYS</div>
   <section id="DefineKeys">DEFINE KEYS</section>
+  <div class="text-white">ENTERVALUES</div>
   <section id="EnterValues">
     <Recursive
       v-for="item in keys.Keys"
@@ -23,6 +25,6 @@ function storenNewValue(){
     />
     <button @click="storenNewValue">SAVE</button>
   </section>
+  <div class="text-white">SHOWVALUES</div>
   <section id="ShowValues">SHWOW-VALUES</section>
 </template>
-«
