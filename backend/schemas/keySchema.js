@@ -9,7 +9,7 @@ const keySchema=new mongoose.Schema({
     maxRange:Number,
     arrayOption:[String],
     // arrayOptions:{type:[{type:Schema.Types.Mixed,required:function(){return this.type=="Array"}}],default:undefined},
-    objectEntries:[String]
+    objectEntries:[{}]
     // objectEntries:{type:{},required:function(){return this.type=="Object"}}
 },
 {

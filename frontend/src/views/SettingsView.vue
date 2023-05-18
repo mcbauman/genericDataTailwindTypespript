@@ -7,19 +7,18 @@ import Autorender from "@/components/Autorender.vue";
 const userStr = userStore();
 const testObject=[
   {
-    name:"matthias",
-    hasChildren:true,
+    name:"Matthias",
     children:[{
-      name:"Torge",hasChildren:false
+      name:"Torge",
+      children:[{name:"Unborn"}]
     },
     {
-      name:"Elodie",hasChildren:false
+      name:"Elodie"
     }
   ]
   },
   {
-    name:"Cynthia",
-    hasChildren:false
+    name:"Cynthia"
   }
 ]
 

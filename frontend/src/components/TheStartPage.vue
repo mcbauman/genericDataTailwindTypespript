@@ -17,6 +17,7 @@ Values.requestValues();
         <RouterLink class="p-5 text-maincolor" to="/about">Enter Values</RouterLink>
         <RouterLink class="p-5 text-maincolor" to="/ShowValues">Show Values</RouterLink>
         <RouterLink class="p-5 text-maincolor" to="/settings">Settings</RouterLink>
+        <RouterLink class="p-5 text-maincolor" to="/main">Main</RouterLink>
       </nav>
   </header>
   <main>

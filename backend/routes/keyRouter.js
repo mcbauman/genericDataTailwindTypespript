@@ -1,6 +1,6 @@
 const express = require("express")
 const checkAuth = require("../middleware/checkAuth")
-const KeySchema = require("../schemas/keySchema.JS");
+const KeySchema = require("../schemas/keySchema");
 const {valueSchema} = require("../schemas/valueSchema")
 
 const keyRouter=express.Router()
