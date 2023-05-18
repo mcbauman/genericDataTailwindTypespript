@@ -28,3 +28,4 @@ function storenNewValue(){
   <div class="text-white">SHOWVALUES</div>
   <section id="ShowValues">SHWOW-VALUES</section>
 </template>
+<!-- JUST CA COMMENT -->
