@@ -23,8 +23,7 @@ export const useValueStore = defineStore("valueStore", () => {
           }
           else{
             Response.value = data;
-            console.log("Response.Value= ",data);
-            
+            console.log("Response.Value= ",data); 
           }
         })
         .catch(error => {

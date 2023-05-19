@@ -2,6 +2,7 @@
 import BaseForm from "./BaseForm.vue";
 import { useValueStore } from "@/stores/ValueStore";
 const props = defineProps(["keyDiscription","newValue"]);
+
 </script>
 
 <template>
@@ -19,3 +20,4 @@ const props = defineProps(["keyDiscription","newValue"]);
     <BaseForm v-else :keyDiscription="props.keyDiscription" :newValue="props.newValue"/>
   </div>
 </template>
+
