@@ -1,8 +1,9 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from "vue";
+import BaseForm from "@/components/BaseComponents/BaseForm.vue";
 import Recursive from "../components/BaseComponents/RecursivFunction.vue";
 import { useKeyResponseStore } from "@/stores/keyResonse";
-import type KeysInterface from "@/interfaces/KeyInterface";
+// import type KeysInterface from "@/interfaces/KeyInterface";
 import { useValueStore } from "@/stores/ValueStore";
 
 const keys = useKeyResponseStore();
@@ -21,7 +22,7 @@ function setDefaults(){
     })
     newValue.value[key.name]=helper
   }else{
-  newValue.value[key.name]=""
+  newValue.value[key.name]="placeholder"
   }
 })
 console.log("NEWVALUE",newValue.value);
@@ -41,7 +42,7 @@ function storenNewValue(){
   </section>
   <div class="text-white">ENTERVALUES</div>
   <section id="EnterValues">
-    <Recursive v-for="itemValue in newValue" :itemValue="itemValue"/>
+    <BaseForm v-for="itemValue in newValue" :itemValue="itemValue"/>
     <button @click="storenNewValue">SAVE</button>
   </section>
   <div class="text-white">SHOWVALUES</div>

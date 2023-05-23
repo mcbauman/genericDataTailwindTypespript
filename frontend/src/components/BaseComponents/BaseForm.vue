@@ -1,5 +1,6 @@
-<script setup lang="ts">
+<script setup>
 import { useValueStore } from '@/stores/ValueStore';
+import { text } from '@fortawesome/fontawesome-svg-core';
 const props = defineProps(["itemValue"]);
 const value= useValueStore()
 </script>
@@ -8,6 +9,13 @@ const value= useValueStore()
   <div class="fieldWrapper">
     <span>{{ props.itemValue.name }}</span>
 
+<!-- If Object, then Recursion -->
+    <BaseForm 
+      v-if="(typeof props.itemValue == 'object')"
+      v-for="child in props.itemValue"
+      :itemValue="child"
+    />
+
 <!-- AddOn To Key if Type== Number -->
   <span v-if="props.itemValue.type == 'Number'"
           >{{ props.itemValue.minRange }} - {{ props.itemValue.maxRange }}</span
@@ -15,8 +23,8 @@ const value= useValueStore()
 
 <!-- For Input Type String or Date -->
     <input
-      v-if="props.itemValue.type == 'String' || props.itemValue.type == 'Date'"
-      :type="props.itemValue.type"
+      v-if="typeof props.itemValue == 'string' || props.itemValue.type == 'Date'"
+      type="text"
       class="aThird"
       v-model="props.itemValue"
     />
