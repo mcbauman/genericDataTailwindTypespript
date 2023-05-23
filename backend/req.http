@@ -43,8 +43,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDQyNzczM
 
 ###KEYS
 GET {{url}}/key/requestKeys
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDU2MzAyNzllMzZhYzhkOTc5NTUzZDUiLCJpYXQiOjE2ODM4MTgyNzYsImV4cCI6MTY4MzkwNDY3Nn0.mrfjkjjodQyw_gUU0tf9wQGmZMGqxWUe_WAILpR-VU8
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDVlMTAwYWQ0MzE0ZDRhNDRiN2I3ZWYiLCJpYXQiOjE2ODQ4NTE0OTAsImV4cCI6MTY4NDkzNzg5MH0.j9iHIAcX9Xv5LW7KuWYFo5jZZt8bJH8HEBoz60KU_9E
 ###
 POST {{url}}/postKeys
 Content-Type: application/json

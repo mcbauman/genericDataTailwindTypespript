@@ -1,46 +1,54 @@
 <script setup lang="ts">
-import { useValueStore } from '@/stores/ValueStore';
-const props = defineProps(["keyDiscription","newValue"]);
-const value= useValueStore()
+const props = defineProps(["itemValue","itemKey"]);
+console.log("EXEC");
+
 </script>
 
 <template>
   <div class="fieldWrapper">
-    <span>{{ props.keyDiscription.name }}</span>
+    <span>{{ props.itemKey.name }}</span>
+
+<!-- If Object, then Recursion -->
+    <BaseForm 
+      v-if="props.itemKey.type == 'Object'"
+      v-for="child in props.itemKey.objectEntries"
+      :itemKey="child"
+      :itemValue="props.itemValue[props.itemKey.name]={}"
+    />
 
 <!-- AddOn To Key if Type== Number -->
-  <span v-if="props.keyDiscription.type == 'Number'"
-          >{{ props.keyDiscription.minRange }} - {{ props.keyDiscription.maxRange }}</span
+  <span v-if="props.itemKey.type == 'Number'"
+          >{{ props.itemKey.minRange }} - {{ props.itemKey.maxRange }}</span
         >
 
 <!-- For Input Type String or Date -->
     <input
-      v-if="props.keyDiscription.type == 'String' || props.keyDiscription.type == 'Date'"
-      :type="props.keyDiscription.type"
+      v-if="props.itemKey.type == 'String' || props.itemKey.type == 'Date'"
+      type="text"
       class="aThird"
-      v-model="props.newValue"
+      v-model="props.itemValue[props.itemKey.name]"
     />
 
 <!-- For Input Type Number -->
     <input
-      v-if="props.keyDiscription.type == 'Number'"
+      v-if="props.itemKey.type == 'Number'"
       type="Number"
-      :min="props.keyDiscription.minRange"
-      :max="props.keyDiscription.maxRange"
+      :min="props.itemKey.minRange"
+      :max="props.itemKey.maxRange"
       class="aThird"
-      v-model="props.newValue"
+      v-model="props.itemValue[props.itemKey.name]"
     />
 <!-- For Input Type Boolean -->
     <input
-      v-if="props.keyDiscription.type == 'Boolean'"
+      v-if="props.itemKey.type == 'Boolean'"
       type="checkbox"
       class="aThird"
-      v-model="props.newValue"
+      v-model="props.itemValue[props.itemKey.name]"
     />
     
 <!-- For Input Type Array -->
-    <select v-if="props.keyDiscription.type == 'Array'" v-model="props.newValue">
-      <option v-for="option in props.keyDiscription.arrayOption" :value="option">
+    <select v-if="props.itemKey.type == 'Array'" v-model="props.itemValue[props.itemKey.name]">
+      <option v-for="option in props.itemKey.arrayOption" :value="option">
         {{ option }}
       </option>
     </select>
