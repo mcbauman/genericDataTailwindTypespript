@@ -1,54 +1,54 @@
-<script setup>
-import { useValueStore } from '@/stores/ValueStore';
-import { text } from '@fortawesome/fontawesome-svg-core';
-const props = defineProps(["itemValue"]);
-const value= useValueStore()
+<script setup lang="ts">
+const props = defineProps(["itemValue","itemKey"]);
+console.log("EXEC");
+
 </script>
 
 <template>
   <div class="fieldWrapper">
-    <span>{{ props.itemValue.name }}</span>
+    <span>{{ props.itemKey.name }}</span>
 
 <!-- If Object, then Recursion -->
     <BaseForm 
-      v-if="(typeof props.itemValue == 'object')"
-      v-for="child in props.itemValue"
-      :itemValue="child"
+      v-if="props.itemKey.type == 'Object'"
+      v-for="child in props.itemKey.objectEntries"
+      :itemKey="child"
+      :itemValue="props.itemValue[props.itemKey.name]={}"
     />
 
 <!-- AddOn To Key if Type== Number -->
-  <span v-if="props.itemValue.type == 'Number'"
-          >{{ props.itemValue.minRange }} - {{ props.itemValue.maxRange }}</span
+  <span v-if="props.itemKey.type == 'Number'"
+          >{{ props.itemKey.minRange }} - {{ props.itemKey.maxRange }}</span
         >
 
 <!-- For Input Type String or Date -->
     <input
-      v-if="typeof props.itemValue == 'string' || props.itemValue.type == 'Date'"
+      v-if="props.itemKey.type == 'String' || props.itemKey.type == 'Date'"
       type="text"
       class="aThird"
-      v-model="props.itemValue"
+      v-model="props.itemValue[props.itemKey.name]"
     />
 
 <!-- For Input Type Number -->
     <input
-      v-if="props.itemValue.type == 'Number'"
+      v-if="props.itemKey.type == 'Number'"
       type="Number"
-      :min="props.itemValue.minRange"
-      :max="props.itemValue.maxRange"
+      :min="props.itemKey.minRange"
+      :max="props.itemKey.maxRange"
       class="aThird"
-      v-model="props.itemValue"
+      v-model="props.itemValue[props.itemKey.name]"
     />
 <!-- For Input Type Boolean -->
     <input
-      v-if="props.itemValue.type == 'Boolean'"
+      v-if="props.itemKey.type == 'Boolean'"
       type="checkbox"
       class="aThird"
-      v-model="props.itemValue"
+      v-model="props.itemValue[props.itemKey.name]"
     />
     
 <!-- For Input Type Array -->
-    <select v-if="props.itemValue.type == 'Array'" v-model="props.itemValue">
-      <option v-for="option in props.itemValue.arrayOption" :value="option">
+    <select v-if="props.itemKey.type == 'Array'" v-model="props.itemValue[props.itemKey.name]">
+      <option v-for="option in props.itemKey.arrayOption" :value="option">
         {{ option }}
       </option>
     </select>
