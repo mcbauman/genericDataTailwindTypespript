@@ -10,12 +10,16 @@ const value = useValueStore();
 const newValue = ref({})
 
 function setDefaults(){
+  // MUST RUN AUTOMATICALLY AND GET RECURSIVE
   keys.Keys.forEach(key=>{
   if(key.type==="Object"){
     console.log("if")
+    let helper={}
     key.objectEntries.forEach(objectEntrie=>{
-      newValue.value[key.name][objectEntrie.name]=""
+    helper[objectEntrie.name]=""
+    console.log(helper);
     })
+    newValue.value[key.name]=helper
   }else{
   newValue.value[key.name]=""
   }
@@ -37,7 +41,7 @@ function storenNewValue(){
   </section>
   <div class="text-white">ENTERVALUES</div>
   <section id="EnterValues">
-
+    <Recursive v-for="itemValue in newValue" :itemValue="itemValue"/>
     <button @click="storenNewValue">SAVE</button>
   </section>
   <div class="text-white">SHOWVALUES</div>
