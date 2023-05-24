@@ -3,7 +3,7 @@ const props = defineProps(["itemValue","itemKey"]);
 </script>
 
 <template>
-  <div class="fieldWrapper">
+  <div>
     <span>{{ props.itemKey.name }}</span>
 
 <!-- If Object, then Recursion -->
@@ -37,6 +37,7 @@ const props = defineProps(["itemValue","itemKey"]);
       class="aThird"
       v-model="props.itemValue[props.itemKey.name]"
     />
+
 <!-- For Input Type Boolean -->
     <input
       v-if="props.itemKey.type == 'Boolean'"
