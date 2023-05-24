@@ -1,7 +1,5 @@
 <script setup lang="ts">
 const props = defineProps(["itemValue","itemKey"]);
-console.log("EXEC");
-
 </script>
 
 <template>
@@ -10,6 +8,7 @@ console.log("EXEC");
 
 <!-- If Object, then Recursion -->
     <BaseForm 
+      class="bg-maincolor rounded-xl p-3"
       v-if="props.itemKey.type == 'Object'"
       v-for="child in props.itemKey.objectEntries"
       :itemKey="child"
