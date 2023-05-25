@@ -23,7 +23,7 @@ const props = defineProps(["itemValue","itemKey"]);
 <!-- For Input Type String or Date -->
     <input
       v-if="props.itemKey.type == 'String' || props.itemKey.type == 'Date'"
-      type="text"
+      :type="props.itemKey.type"
       class="aThird"
       v-model="props.itemValue[props.itemKey.name]"
     />

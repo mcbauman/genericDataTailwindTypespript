@@ -5,7 +5,7 @@ import { useKeyResponseStore } from "../stores/keyResonse";
 const newKey= ref<any> ({});
 const props=defineProps(["varialbeToWrite"])
 const response = useKeyResponseStore();
-const helper = ref<any>(1);
+const helper = ref<number>(1);
 const array = ref([]);
 const varToWrite=ref<any>({})
 
@@ -60,6 +60,7 @@ function storeNewKey() {
     <div v-if="varToWrite.name && varToWrite.type === 'Object'">
       <input type="number" placeholder="Anzahl Subtypen" v-model="helper" />
       <DefineFields-DefineKeys v-for="number in helper" id="InnerLoop" :varialbeToWrite="varToWrite.name.slice()"/>
+      <button @click="helper++">add</button>
     </div>
     <button v-if="varToWrite.type !== 'Object'" class="text-submit" type="submit" @click.prevent="storeNewKey">
       <font-awesome-icon icon="floppy-disk" title="Add key-defenition" />

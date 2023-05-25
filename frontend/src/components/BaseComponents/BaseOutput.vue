@@ -13,11 +13,12 @@ const props = defineProps(["itemValue","itemKey","readonly","disabled"]);
 <!-- Type number -->
       <input v-else-if="(typeof value=='number')" type="Number" :value="value">
 <!-- Type bool -->
-      <input v-else-if="(typeof value=='date')" type="date" :value="value">
+      <input v-else-if="(typeof value=='boolean')" type="checkbox" :value="value">
 <!-- Type Array -->
       <select v-else-if="(Array.isArray(value))" type="text" :value="value">
         IS ARRAY
       </select>
     </div>
   </div>
+  <hr>
 </template>
