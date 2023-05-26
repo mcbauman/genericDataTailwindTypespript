@@ -11,7 +11,7 @@ const varToWrite=ref<any>({})
 
 if(props.varialbeToWrite){
   const addition=props.varialbeToWrite
-  varToWrite.value[addition]={name:123}
+  varToWrite.value[addition]={name:""}
   varToWrite.value= varToWrite.value[addition]
 }else{
   varToWrite.value=newKey.value

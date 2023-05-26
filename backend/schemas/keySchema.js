@@ -10,6 +10,7 @@ const keySchema=new mongoose.Schema({
     arrayOption:[String],
     // arrayOptions:{type:[{type:Schema.Types.Mixed,required:function(){return this.type=="Array"}}],default:undefined},
     objectEntries:[{}]
+    // objectEntries:[keySchema]
     // objectEntries:{type:{},required:function(){return this.type=="Object"}}
 },
 {
