@@ -6,6 +6,7 @@ import type KeysInterface from "../interfaces/KeyInterface"
 export const useKeyResponseStore = defineStore("keyResponse", () => {
   const user=userStore()
   const Keys = ref<KeysInterface[]>([])
+  const objectEntries = ref([])
 
   function requestKeyes() {
     fetch("http://localhost:9000/key/requestKeys",{
@@ -76,5 +77,5 @@ export const useKeyResponseStore = defineStore("keyResponse", () => {
     })
   }
 
-  return { Keys, requestKeyes, storeNewKey, deleteKey, moveItemToIndex, updateKey };
+  return { Keys, objectEntries, requestKeyes, storeNewKey, deleteKey, moveItemToIndex, updateKey };
 });

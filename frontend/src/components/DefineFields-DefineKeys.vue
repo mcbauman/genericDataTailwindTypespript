@@ -22,7 +22,10 @@ if(props.varialbeToWrite){
 function addOjbect(){
     newKey.value.type='Object'
     newKey.value.name=props.varialbeToWrite
-    response.storeNewKey({...newKey.value, objectEntries:varToWrite.value})
+    response.objectEntries.push(varToWrite.value)
+    console.log(response.objectEntries);
+    
+    // response.storeNewKey({...newKey.value, objectEntries:varToWrite.value})
 }
 
 function storeNewKey() {
@@ -36,6 +39,10 @@ function storeNewKey() {
   //}
 
   helper.value = 1;
+}
+
+function storeWithRecursion(){
+  response.storeNewKey({...newKey.value, objectEntries:response.objectEntries})
 }
 </script>
 
@@ -67,14 +74,17 @@ function storeNewKey() {
         placeholder="Auswahl-Option"
       />
     </div>
+<!-- RECURSION CASE -->
     <div v-if="varToWrite.name && varToWrite.type === 'Object'">
       <input type="number" placeholder="Anzahl Subtypen" v-model="helper" />
       <DefineFields-DefineKeys v-for="number in helper" id="InnerLoop" :varialbeToWrite="varToWrite.name.slice()" :helperInfo="helper"/>
-      <button @click="helper++">add</button>
+      <button @click.prevent="storeWithRecursion">SAFE</button>
     </div>
+<!-- Button Direct -->
     <button v-if="varToWrite.type !== 'Object' && helperInfo<=1" class="text-submit" type="submit" @click.prevent="storeNewKey">
       <font-awesome-icon icon="floppy-disk" title="Add key-defenition" />
     </button>
+<!-- Button in Recursion -->
     <button v-if="varToWrite.type !== 'Object' && helperInfo>=2" class="text-submit" type="submit" @click.prevent="addOjbect">
       <font-awesome-icon icon="floppy-disk" title="Add key-defenition" />{{ helperInfo }}
     </button>
