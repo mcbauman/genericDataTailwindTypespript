@@ -20,24 +20,14 @@ if(props.varialbeToWrite){
 }
 
 function addOjbect(){
-    newKey.value.type='Object'
-    newKey.value.name=props.varialbeToWrite
-    response.objectEntries.push(varToWrite.value)
-    console.log(response.objectEntries);
-    
-    // response.storeNewKey({...newKey.value, objectEntries:varToWrite.value})
+  newKey.value.type='Object'
+  newKey.value.name=props.varialbeToWrite
+  response.objectEntries.push(varToWrite.value)
+  console.log(response.objectEntries);
 }
 
 function storeNewKey() {
-  // if(props.varialbeToWrite){
-  //   newKey.value.type='Object'
-  //   newKey.value.name=props.varialbeToWrite
-  //   response.storeNewKey({...newKey.value, objectEntries:varToWrite.value})
-  // }
-  // else{
-    response.storeNewKey({...newKey.value, arrayOption: array.value})
-  //}
-
+  response.storeNewKey({...newKey.value, arrayOption: array.value})
   helper.value = 1;
 }
 
