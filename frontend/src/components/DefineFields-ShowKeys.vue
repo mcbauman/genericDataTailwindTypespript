@@ -46,7 +46,12 @@ const response = useKeyResponseStore();
       <div v-if="object.type === 'Object'" class="fieldWrapper gridOptions">
         <span>Kategorie:</span>
         <div class="row">
-          <div v-for="field in object.objectEntries">{{ field }} /</div>
+          <div v-for="field in object.objectEntries">
+            <span>Name</span>
+            {{ field.name }}: 
+            <span>Type</span>
+            {{ field.type }} /
+          </div>
         </div>
       </div>
       <button @click="response.deleteKey(object)" class="text-danger gridButton">
