@@ -1,15 +1,13 @@
+
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import {userStore} from "./stores/userSettings.js"
+import TheStartPage from "./components/TheStartPage.vue"
+import TheLogin from "./components/TheLogin.vue"
+
+const user=userStore()
 </script>
 
 <template>
-  <header>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/initial">Initial</RouterLink>
-        <RouterLink to="/config">Config</RouterLink>
-      </nav>
-  </header>
-
-  <RouterView />
+  <TheStartPage v-if="user.user.token"/>
+  <TheLogin v-else/>
 </template>
